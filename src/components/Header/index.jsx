@@ -6,17 +6,19 @@ export default function Header(){
     return(
         <header className={styles.header}>
            <div>
-                <img src={logo} width={160} alt={logo} />
+                <Link to="/">
+                    <img src={logo} width={140} alt={logo} />
+                </Link>
             </div> 
             <ul>
                 <li>
-                    Todos os bairros
+                    <Link to="/" >Todos os bairros</Link>
                 </li>
                 <li>
-                    Pesquisar
+                    <Link to="/pesquisar">Pesquisar</Link>
                 </li>
                 <li>
-                    Cadastrar
+                    <Link to="/cadastrar">Cadastrar</Link>
                 </li>
             </ul>
         </header>

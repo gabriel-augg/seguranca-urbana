@@ -1,6 +1,19 @@
+@import url(../../color-vars.css);
+
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1em;
+    padding: 0.5em 0.8em;
+    background-color: var(--secundary-p);
+}
+.header ul {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.header ul a {
+    color: var(--primary);
 }
