@@ -1,0 +1,44 @@
+.search_area {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background-color: var(--secundary);
+    gap: 0.5em;
+} 
+
+.search_area div {
+    display: flex;
+}
+
+.search_area div input {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    outline: none;
+}
+
+.search_area div button {
+    padding: 0.5em;
+    border: none;
+    font-size: 1em;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 400;
+}
+
+.search_area select {
+    padding: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.search_area select option {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--secundary-p);
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--white);
+}
