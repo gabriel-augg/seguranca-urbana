@@ -1,7 +1,11 @@
+import Container from "../../components/Container"
+
 export default function Home(){
     return(
-        <section>
-            <h1>Home page</h1>
-        </section>
+        <Container>
+            <section>
+                <h1>Home page</h1>
+            </section>
+        </Container>
     )
 }
