@@ -1,0 +1,7 @@
+@import url(../../color-vars.css);
+
+.title {
+    text-align: center;
+    color: var(--secundary-p);
+    border-bottom: 2px solid var(--primary);
+}
