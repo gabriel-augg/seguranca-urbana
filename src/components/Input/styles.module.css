@@ -1,0 +1,22 @@
+.input_control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.input_control label {
+    font-size: 1em;
+    color: var(--secunday-p);
+    font-weight: bold;
+    margin-bottom: 0.4em;
+}
+
+.input_control input {
+    padding: 0.6em;
+    border: none;
+    outline: none;
+}
+
+.input_control input::placeholder {
+    font-weight: bold;
+}

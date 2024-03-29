@@ -1,0 +1,40 @@
+@import url(../../color-vars.css);
+
+.create_container form {
+    padding: 2em 1.2em;
+    background-color: var(--secundary);
+    margin-bottom: 3em;
+}
+
+.textarea_control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.textarea_control label {
+    font-size: 1em;
+    color: var(--secunday-p);
+    font-weight: bold;
+    margin-bottom: 0.4em;
+}
+
+.textarea_control textarea {
+    resize: none;
+    outline: none;
+    padding: 1em;
+}
+
+.textarea_control textarea::placeholder {
+    font-weight: bold;
+}
+
+.create_container form button {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 0.5em;
+    border: none;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1em;
+}

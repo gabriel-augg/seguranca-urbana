@@ -4,4 +4,7 @@
     text-align: center;
     color: var(--secundary-p);
     border-bottom: 2px solid var(--primary);
+    font-size: 1.7em;
+    margin: 2em 0;
+    font-weight: bold;
 }

@@ -1,11 +1,10 @@
 import Container from "../../components/Container"
+import Title from "../../components/Title"
 
 export default function Home(){
     return(
-        <Container>
-            <section>
-                <h1>Home page</h1>
-            </section>
-        </Container>
+        <section>
+            <h1>Home</h1>
+        </section>
     )
 }
