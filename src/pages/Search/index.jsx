@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef} from "react"
+import InputMask from "react-input-mask"
 
 import Container from "../../components/Container"
 import Title from "../../components/Title"
@@ -11,17 +12,28 @@ import api from "../../utils/api"
 export default function Search(){
     const [card, setCard] = useState(null)
     const [select, setSelect] = useState(0)
-    const searchRef = useRef()
+    const [search, setSearch] = useState("")
 
     function handleSearch(){
-        api.get(`/neighborhoods/${ !select ?  "cep/" + searchRef.current.value : "crimerate/cep/" + searchRef.current.value}`)
+        if(search.length !== 8) {
+            alert("Por favor, digite 8 digitos")
+            return
+        }
+
+        api.get(`/neighborhoods/${ !select ?  "cep/" + search : "crimerate/cep/" + search}`)
         .then((res) => {
-            searchRef.current.value = ""
+            setSearch("")
             setCard(res.data.neighborhood)
         })
         .catch(()=> {
             alert("Houve um erro inesperado, por favor, tente novamente")
         })
+    }
+
+    function handleInputSearch(e){
+        const formattedCep = e.target.value.replace("-", "")
+        console.log(formattedCep)
+        setSearch(formattedCep)
     }
 
     return(
@@ -31,7 +43,7 @@ export default function Search(){
                 <Title title="Procurando um bairro" />
                 <div className={styles.search_area}>
                     <div>
-                        <input type="number" ref={searchRef} name="search" placeholder="Digite aqui o cep"  />
+                        <InputMask mask="99999-999" onChange={handleInputSearch} placeholder="CEP" />
                         <button onClick={handleSearch}>Buscar</button>
                     </div>
                     <select onChange={(e) =>setSelect(e.target.value)}>
