@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-export default function Card({name, crimeRate, publicLight, recomendation, cep }){
+export default function Card({name, crimeRate, publicLight, recomendation, cep, isSearch }){
     return(
         <div className={styles.card}>
             <div>
@@ -11,18 +11,22 @@ export default function Card({name, crimeRate, publicLight, recomendation, cep }
                 <h1>Taxa de criminalidade</h1>
                 <span>{crimeRate}</span>
             </div>
-            <div>
-                <h1>Iluminação publica</h1>
-                <span>{publicLight}</span>
-            </div>
-            <div>
-                <h1>Recomendação</h1>
-                <span>{recomendation}</span>
-            </div>
-            <div>
-                <h1>CEP</h1>
-                <span>{cep}</span>
-            </div>
+            {!isSearch && (
+                <>
+                    <div>
+                        <h1>Iluminação publica</h1>
+                        <span>{publicLight}</span>
+                    </div>
+                    <div>
+                        <h1>Recomendação</h1>
+                        <span>{recomendation}</span>
+                    </div>
+                    <div>
+                        <h1>CEP</h1>
+                        <span>{cep}</span>
+                    </div>
+                </>
+            ) }
         </div>
     )
 }

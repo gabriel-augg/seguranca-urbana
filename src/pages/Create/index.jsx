@@ -1,4 +1,5 @@
 import {useRef, useState} from "react"
+import { useNavigate } from "react-router-dom"
 
 import Container from "../../components/Container"
 import Title from "../../components/Title"
@@ -15,6 +16,8 @@ export default function Home(){
     const policePresenceRef = useRef()
     const [recommendation, setRecommendation] = useState("")
 
+    const navigate = useNavigate()
+
 
     function handleCreate(e){
         e.preventDefault()
@@ -28,9 +31,16 @@ export default function Home(){
         })
         .then(()=> {
             alert("Sucesso!")
+            navigate("/")
         })
         .catch(()=> {
-            alert("Erro!")
+            nameRef.current.value = ""
+            crimeRateRef.current.value = ""
+            publicLightRef.current.value = ""
+            policePresenceRef.current.value =""
+            setRecommendation("")
+            cepRef.current.value = ""
+            alert("Houve algum erro, por favor tente mais tarde!")
         })
     }
 
