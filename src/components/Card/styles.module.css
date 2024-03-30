@@ -1,0 +1,19 @@
+@import url(../../color-vars.css);
+
+.card {
+    padding: 1em;
+    background-color: var(--secundary);
+}
+
+.card div {
+    margin-bottom: 1em;
+}
+
+.card div h1 {
+    font-weight: bold;
+}
+
+.card div span {
+    color: var(--white);
+    margin-top: 0.2em;
+}

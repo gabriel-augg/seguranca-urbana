@@ -42,3 +42,15 @@
     margin: 5px;
     background-color: var(--white);
 }
+.card_area {
+    margin: 2em 0;
+}
+
+.no_card {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.no_card h1 {
+    color: var(--secundary-p);
+}
