@@ -1,8 +1,8 @@
 import styles from "./styles.module.css"
 
-export default function Card({id, name, crimeRate, publicLight, recomendation, cep }){
+export default function Card({name, crimeRate, publicLight, recomendation, cep }){
     return(
-        <div key={id} className={styles.card}>
+        <div className={styles.card}>
             <div>
                 <h1>Bairro</h1>
                 <span>{name}</span>

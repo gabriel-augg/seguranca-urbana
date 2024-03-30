@@ -1,0 +1,17 @@
+.home_container {
+    padding: 1em 4em;
+}
+
+.card_container {
+    padding: 1em;
+    gap: 1em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card_container > div {
+    flex-grow: 1;
+    min-width: 350px;
+    max-width: calc(33.33% - 1em);
+}
