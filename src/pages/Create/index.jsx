@@ -11,12 +11,22 @@ import api from "../../utils/api"
 export default function Home(){
     const [name, setName] = useState("")
     const [cep, setCep] = useState("")
-    const [crimeRate, setCrimeRate] = useState("")
+    const [crimeRate, setCrimeRate] = useState("Média")
     const [publicLight, setPublicLight] = useState("Boa")
-    const [policePresence, setPolicePresence] = useState("")
+    const [policePresence, setPolicePresence] = useState("Boa")
     const [recommendation, setRecommendation] = useState("")
 
     const navigate = useNavigate()
+
+    const validadeForm = () => {
+        return (
+            name && 
+            cep &&  
+            !(cep.length < 8) && 
+            crimeRate && 
+            recommendation
+        )
+    }
 
     function handleCreate(e){
         e.preventDefault()
@@ -53,8 +63,8 @@ export default function Home(){
         // })
     }
 
-    function handleInputSearch(e){
-        const formattedCep = e.target.value.replace("-", "")
+    function handleInputCep(e){
+        const formattedCep = e.target.value.replace("-", "").replace("_","")
         setCep(formattedCep)
     }
 
@@ -63,15 +73,59 @@ export default function Home(){
             <section className={styles.create_container}>
                 <Title title="Adicionando um bairro" />
                 <form onSubmit={handleCreate}>
-                    <Input title="Nome do bairro" value={name} change={(e) => setName(e.target.value)} name="name" placeholder="Digite o nome do bairro" />
-                    <Input title="CEP" name="cep" cep={handleInputSearch} placeholder="CEP" isCep={true} />
-                    <Input title="Taxa de criminalidade" value={crimeRate} change={(e) => setCrimeRate(e.target.value)} name="crimeRate" placeholder="Digite a taxa de criminalidade" />
-                    <Input title="Presença policial" value={policePresence} change={(e) => setPolicePresence(e.target.value)} name="policePresence" placeholder="Digite o estado da presença policial" />
+
+                    <Input 
+                        title="Nome do bairro" 
+                        value={name} change={(e) => setName(e.target.value)} 
+                        name="name" 
+                        placeholder="Digite o nome do bairro" 
+                    />
+
+                    <Input 
+                        title="CEP" 
+                        name="cep" 
+                        cep={handleInputCep} 
+                        placeholder="CEP" 
+                        isCep={true} 
+                    />
+
+                    <Select 
+                        title="Taxa de criminalidade" 
+                        value={crimeRate} 
+                        change={(e) => setCrimeRate(e.target.value)} 
+                        name="crimeRate" 
+                        options={["Baixa", "Média", "Alta", "Muito alta"]} 
+                    />
+
+
+                    <Select 
+                        title="Iluminação pública" 
+                        value={publicLight} 
+                        change={(e) => setPublicLight(e.target.value)} 
+                        name="publicLight" 
+                        options={["Ruim", "Boa", "Ótima"]} 
+                    />
+
+                    <Select 
+                        title="Presença policial"
+                        value={policePresence}
+                        change={(e) => setPolicePresence(e.target.value)}
+                        name="policePresence" 
+                        options={["Ruim", "Boa", "Ótima"]} 
+                    />
+
                     <div className={styles.textarea_control}>
+
                         <label>Recomendação de segurança</label>
-                        <textarea onChange={(e)=> setRecommendation(e.target.value)} name="recommendation" placeholder="Digite uma recomendação" />
+                        <textarea 
+                            onChange={(e)=> setRecommendation(e.target.value)} 
+                            name="recommendation" 
+                            placeholder="Digite uma recomendação" 
+                        />
+
                     </div>
-                    <button type="submit">
+
+                    <button disabled={!validadeForm()}  type="submit">
                         Cadastrar
                     </button>
                 </form>

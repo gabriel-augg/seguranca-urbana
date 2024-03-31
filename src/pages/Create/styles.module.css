@@ -38,3 +38,11 @@
     font-weight: bold;
     font-size: 1em;
 }
+.create_container form button:hover {
+    background-color: #98bdf0;
+}
+
+.create_container form button:disabled {
+    background-color: #cbdef8;
+    cursor: inherit;
+}
