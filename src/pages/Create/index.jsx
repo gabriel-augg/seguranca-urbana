@@ -13,7 +13,7 @@ export default function Home(){
     const [cep, setCep] = useState("")
     const [crimeRate, setCrimeRate] = useState("Média")
     const [publicLight, setPublicLight] = useState("Boa")
-    const [policePresence, setPolicePresence] = useState("Boa")
+    const [policePresence, setPolicePresence] = useState("Média")
     const [recommendation, setRecommendation] = useState("")
 
     const navigate = useNavigate()
@@ -40,27 +40,26 @@ export default function Home(){
             cep
         })
 
-        // api.post("/neighborhoods/create", {
-            // name,
-            // crimeRate,
-            // publicLight,
-            // policePresence,
-            // recommendation,
-            // cep
-        // })
-        // .then(()=> {
-        //     alert("Sucesso!")
-        //     navigate("/")
-        // })
-        // .catch(()=> {
-        //     setName("")
-        //     setCrimeRate("")
-        //     setPublicLight("")
-        //     setPolicePresence("")
-        //     setRecommendation("")
-        //     setCep("")
-        //     alert("Houve algum erro, por favor tente novamente mais tarde!")
-        // })
+        api.post("/neighborhoods/create", {
+            name,
+            crimeRate,
+            publicLight,
+            policePresence,
+            recommendation,
+            cep
+        })
+        .then(()=> {
+            navigate("/")
+        })
+        .catch(()=> {
+            setName("")
+            setCrimeRate("")
+            setPublicLight("")
+            setPolicePresence("")
+            setRecommendation("")
+            setCep("")
+            alert("Houve algum erro inesperado, por favor tente novamente mais tarde!")
+        })
     }
 
     function handleCep(e){
@@ -112,7 +111,7 @@ export default function Home(){
                         value={policePresence}
                         change={(e) => setPolicePresence(e.target.value)}
                         name="policePresence" 
-                        options={["Ruim", "Boa", "Ótima"]} 
+                        options={["Baixa", "Média", "Alta", "Muito alta"]} 
                     />
 
                     <div className={styles.textarea_control}>
