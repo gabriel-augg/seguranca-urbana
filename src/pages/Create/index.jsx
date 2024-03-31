@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Container from "../../components/Container"
 import Title from "../../components/Title"
 import Input from "../../components/Input"
+import Select from "../../components/Select"
 
 import styles from "./styles.module.css"
 import api from "../../utils/api"
@@ -11,7 +12,7 @@ export default function Home(){
     const [name, setName] = useState("")
     const [cep, setCep] = useState("")
     const [crimeRate, setCrimeRate] = useState("")
-    const [publicLight, setPublicLight] = useState("")
+    const [publicLight, setPublicLight] = useState("Boa")
     const [policePresence, setPolicePresence] = useState("")
     const [recommendation, setRecommendation] = useState("")
 
@@ -65,7 +66,6 @@ export default function Home(){
                     <Input title="Nome do bairro" value={name} change={(e) => setName(e.target.value)} name="name" placeholder="Digite o nome do bairro" />
                     <Input title="CEP" name="cep" cep={handleInputSearch} placeholder="CEP" isCep={true} />
                     <Input title="Taxa de criminalidade" value={crimeRate} change={(e) => setCrimeRate(e.target.value)} name="crimeRate" placeholder="Digite a taxa de criminalidade" />
-                    <Input title="Iluminação pública" value={publicLight} change={(e) => setPublicLight(e.target.value)} name="publicLight" placeholder="Digite o estado da iluminação publica" />
                     <Input title="Presença policial" value={policePresence} change={(e) => setPolicePresence(e.target.value)} name="policePresence" placeholder="Digite o estado da presença policial" />
                     <div className={styles.textarea_control}>
                         <label>Recomendação de segurança</label>

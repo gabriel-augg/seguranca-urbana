@@ -46,7 +46,7 @@ export default function Search(){
                         <InputMask mask="99999-999" onChange={handleInputSearch} placeholder="CEP" />
                         <button onClick={handleSearch}>Buscar</button>
                     </div>
-                    <select onChange={(e) =>setSelect(e.target.value)}>
+                    <select onChange={(e) => setSelect(e.target.value)}>
                         <option value={0} >Tudo</option>
                         <option value={1}>Taxa de criminalidade</option>
                     </select>
