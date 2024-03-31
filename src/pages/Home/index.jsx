@@ -24,7 +24,16 @@ export default function Home(){
                 { cards.length !== 0 && (
                     cards.map((card) => {
                         return(
-                            <Card key={card.id} id={card.id} name={card.name} crimeRate={card.crimeRate} publicLight={card.publicLight} recomendation={card.recommendation} cep={card.cep}  />
+                            <Card 
+                                key={card.id} 
+                                id={card.id} 
+                                name={card.name} 
+                                crimeRate={card.crimeRate} 
+                                publicLight={card.publicLight} 
+                                recomendation={card.recommendation} 
+                                cep={card.cep} 
+                                isSearch="Tudo" 
+                            />
                         )
                     })
                 )}

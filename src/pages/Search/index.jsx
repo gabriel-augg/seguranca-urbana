@@ -17,14 +17,14 @@ export default function Search(){
 
     function handleSearch(){
 
-        // api.get(`/neighborhoods/${ select === "Tudo" ?  "cep/" + cep : "crimerate/cep/" + cep}`)
-        // .then((res) => {
-        //     setCep("")
-        //     setCard(res.data.neighborhood)
-        // })
-        // .catch(()=> {
-        //     alert("Houve um erro inesperado, por favor, tente novamente")
-        // })
+        api.get(`/neighborhoods/${ select === "Tudo" ?  "cep/" + cep : "crimerate/cep/" + cep}`)
+        .then((res) => {
+            setCep("")
+            setCard(res.data.neighborhood)
+        })
+        .catch(()=> {
+            alert("Houve um erro inesperado, por favor, tente novamente")
+        })
     }
 
     function handleCep(e){
@@ -40,19 +40,18 @@ export default function Search(){
                 <Title title="Procurando um bairro" />
                 <div className={styles.search_area}>
                     <div>
+                        <Input 
+                            name="cep" 
+                            value={cep}
+                            change={handleCep} 
+                            placeholder="CEP" 
+                            isCep={true} 
+                        />
                         <div>
-                            <Input 
-                                title="CEP" 
-                                name="cep" 
-                                value={cep}
-                                change={handleCep} 
-                                placeholder="CEP" 
-                                isCep={true} 
-                            />
+                            <button disabled={(cep.length < 8)} onClick={handleSearch}>
+                                Buscar
+                            </button>
                         </div>
-                        <button disabled={(cep.length < 8)} onClick={handleSearch}>
-                            Buscar
-                        </button>
                     </div>
                     <Select 
                         title="Taxa de criminalidade" 
@@ -62,10 +61,21 @@ export default function Search(){
                         options={["Tudo", "Taxa de criminalidade"]}
                         isSearch={true}
                     />
+
+
                 </div>
                 <div className={styles.card_area}>
                     {card ? (
-                        <Card key={card.id} id={card.id} name={card.name} crimeRate={card.crimeRate} publicLight={card.publicLight} recomendation={card.recommendation} cep={card.cep} isSearch={select}  />
+                        <Card 
+                            key={card.id} 
+                            id={card.id} 
+                            name={card.name} 
+                            crimeRate={card.crimeRate} 
+                            publicLight={card.publicLight} 
+                            recomendation={card.recommendation} 
+                            cep={card.cep} 
+                            isSearch={select}
+                         />
                     ) : (
                         <div className={styles.no_card}>
                             <h1>Não há nenhum card no momento.</h1>

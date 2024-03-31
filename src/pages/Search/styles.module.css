@@ -4,26 +4,35 @@
     padding: 1em;
     background-color: var(--secundary);
     gap: 0.5em;
-} 
+}  
 
-.search_area div {
+.search_area > div {
     display: flex;
 }
 
-.search_area div input {
+.search_area > div div:first-child{
     width: 100%;
-    padding: 0.5em;
-    border: none;
-    outline: none;
+}
+
+.search_area > div div:last-child button{
+    height: 2.38em;
 }
 
 .search_area div button {
     padding: 0.5em;
     border: none;
-    font-size: 1em;
     background-color: var(--primary);
     color: var(--white);
     font-weight: 400;
+}
+
+.search_area div button:hover {
+    background-color: #98bdf0;
+}
+
+.search_area div button:disabled {
+    background-color: #cbdef8;
+    cursor: inherit;
 }
 
 .search_area select {

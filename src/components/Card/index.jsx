@@ -11,7 +11,7 @@ export default function Card({name, crimeRate, publicLight, recomendation, cep, 
                 <h1>Taxa de criminalidade</h1>
                 <span>{crimeRate}</span>
             </div>
-            {!isSearch && (
+            {isSearch === "Tudo" && (
                 <>
                     <div>
                         <h1>Iluminação publica</h1>

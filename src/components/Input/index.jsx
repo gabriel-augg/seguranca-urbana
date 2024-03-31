@@ -6,7 +6,7 @@ export default function Input({title, change, value, name, placeholder, isCep}){
     if(isCep){
         return(
         <div className={styles.input_control}>
-            <label htmlFor={name}>{title}</label>
+            { title && <label htmlFor={name}>{title}</label>}
            <InputMask id={name} mask="99999-999" value={value} onChange={change} placeholder={placeholder}/>
         </div> 
         )
