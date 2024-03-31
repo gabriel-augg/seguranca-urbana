@@ -63,7 +63,7 @@ export default function Home(){
         // })
     }
 
-    function handleInputCep(e){
+    function handleCep(e){
         const formattedCep = e.target.value.replace("-", "").replace("_","")
         setCep(formattedCep)
     }
@@ -84,7 +84,8 @@ export default function Home(){
                     <Input 
                         title="CEP" 
                         name="cep" 
-                        cep={handleInputCep} 
+                        value={cep}
+                        change={handleCep} 
                         placeholder="CEP" 
                         isCep={true} 
                     />

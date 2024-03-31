@@ -1,9 +1,10 @@
-import { useState, useRef} from "react"
-import InputMask from "react-input-mask"
+import { useState} from "react"
 
 import Container from "../../components/Container"
 import Title from "../../components/Title"
 import Card from "../../components/Card"
+import Input from "../../components/Input"
+import Select from "../../components/Select"
 
 import ilustration from "../../assets/ilustration.svg"
 import styles from "./styles.module.css"
@@ -11,29 +12,25 @@ import api from "../../utils/api"
 
 export default function Search(){
     const [card, setCard] = useState(null)
-    const [select, setSelect] = useState(0)
-    const [search, setSearch] = useState("")
+    const [select, setSelect] = useState("Tudo")
+    const [cep, setCep] = useState("")
 
     function handleSearch(){
-        if(search.length !== 8) {
-            alert("Por favor, digite 8 digitos")
-            return
-        }
 
-        api.get(`/neighborhoods/${ !select ?  "cep/" + search : "crimerate/cep/" + search}`)
-        .then((res) => {
-            setSearch("")
-            setCard(res.data.neighborhood)
-        })
-        .catch(()=> {
-            alert("Houve um erro inesperado, por favor, tente novamente")
-        })
+        // api.get(`/neighborhoods/${ select === "Tudo" ?  "cep/" + cep : "crimerate/cep/" + cep}`)
+        // .then((res) => {
+        //     setCep("")
+        //     setCard(res.data.neighborhood)
+        // })
+        // .catch(()=> {
+        //     alert("Houve um erro inesperado, por favor, tente novamente")
+        // })
     }
 
-    function handleInputSearch(e){
-        const formattedCep = e.target.value.replace("-", "")
+    function handleCep(e){
+        const formattedCep = e.target.value.replace("-", "").replace("_", "")
         console.log(formattedCep)
-        setSearch(formattedCep)
+        setCep(formattedCep)
     }
 
     return(
@@ -43,13 +40,28 @@ export default function Search(){
                 <Title title="Procurando um bairro" />
                 <div className={styles.search_area}>
                     <div>
-                        <InputMask mask="99999-999" onChange={handleInputSearch} placeholder="CEP" />
-                        <button onClick={handleSearch}>Buscar</button>
+                        <div>
+                            <Input 
+                                title="CEP" 
+                                name="cep" 
+                                value={cep}
+                                change={handleCep} 
+                                placeholder="CEP" 
+                                isCep={true} 
+                            />
+                        </div>
+                        <button disabled={(cep.length < 8)} onClick={handleSearch}>
+                            Buscar
+                        </button>
                     </div>
-                    <select onChange={(e) => setSelect(e.target.value)}>
-                        <option value={0} >Tudo</option>
-                        <option value={1}>Taxa de criminalidade</option>
-                    </select>
+                    <Select 
+                        title="Taxa de criminalidade" 
+                        value={select} 
+                        change={(e) => setSelect(e.target.value)} 
+                        name="select" 
+                        options={["Tudo", "Taxa de criminalidade"]}
+                        isSearch={true}
+                    />
                 </div>
                 <div className={styles.card_area}>
                     {card ? (
