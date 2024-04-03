@@ -22,14 +22,18 @@ export default function Search(){
             setCep("")
             setCard(res.data.neighborhood)
         })
-        .catch(()=> {
+        .catch((error)=> {
+            if(error.response.data.message.includes("not-found")){
+                alert("Não conseguimos localizar este bairro, por favor, digite o cep novamente")
+                return
+            }
+
             alert("Houve um erro inesperado, por favor, tente novamente")
         })
     }
 
     function handleCep(e){
         const formattedCep = e.target.value.replace("-", "").replace("_", "")
-        console.log(formattedCep)
         setCep(formattedCep)
     }
 
